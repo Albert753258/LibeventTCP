@@ -13,6 +13,9 @@ class SQLUtils{
         }
         
         std::string sendSQL(std::string sqlStr){
+            if(sqlStr == "quit"){
+                return "Forbidden";
+            }
             MYSQL_ROW row;
             MYSQL_RES *res;
             mysql_query(connection, sqlStr.c_str());

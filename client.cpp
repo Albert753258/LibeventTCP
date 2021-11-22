@@ -41,13 +41,13 @@ int main(){
     std::string cmd = "";
     while(true){
         cmd = "";
-        printf("Please enter SQL command or exit\n");
+        printf("Please enter SQL command or exit to exit\n");
         std::getline(std::cin, cmd);
         if(cmd == "exit"){
+            close(soc);
             exit(EXIT_SUCCESS);
         }
         int writeBytes = write(soc, cmd.c_str(), 25600);
-        std::cout << "Write success\n";
         if(writeBytes == -1){
             perror("Write failed");
             close(soc);
